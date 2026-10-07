@@ -64,6 +64,8 @@ document.getElementById('newsletterForm').addEventListener('submit', function (e
 
         showMessage("Thank you for subscribing!", "msg-success");
         emailInput.value = "";
+                window.location.href ='404.html'
+
     }
 });
 
@@ -78,8 +80,7 @@ function showMessage(message, className) {
 
     setTimeout(() => {
         messageDiv.className = 'form-msg';
-        window.location.href ='404.html'
-    }, 400);
+    }, 1000);
 }
 
 

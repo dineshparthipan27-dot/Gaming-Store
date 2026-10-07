@@ -1435,6 +1435,7 @@
  @media (max-width: 576px) {
      .pricing-section {
          padding: 90px 5%;
+         overflow-x: hidden;
      }
 
      .plan-price {
