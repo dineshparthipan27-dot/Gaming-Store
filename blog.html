@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="gaming.css">
+</head>
+
+<body>
+
+    <div id="cyber-loader" class="cyber-loader-overlay">
+    <div class="cyber-grid-bg"></div>
+    <div class="loader-content">
+        
+       
+        <div class="loader-logo">
+            <i class="fa-solid fa-gamepad"></i> STACKLEY<span class="neon-purple-text"></span>
+        </div>
+        
+      
+        <div class="loader-status" id="loader-status-text">INITIALIZING NEURAL LINK...</div>
+        
+  
+        <div class="loader-bar-container">
+            <div class="loader-bar-fill" id="loader-bar"></div>
+        </div>
+        
+        
+        <div class="loader-percentage" id="loader-percentage">0%</div>
+
+    </div>
+</div>
+
+    <header id="main-header">
+
+        <a href="index.html" class="logo-container">
+            <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+        </a>
+
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="about.html" class="nav-item">About</a></li>
+                <li><a href="Service.html" class="nav-item">Services</a></li>
+                <li><a href="blog.html" class="nav-item active">Blog</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+                <li><a href="login.html" class="nav-item login-btn"><i class="fa-solid fa-user"></i> Login</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+
+
+
+    <section class="proper-blog-hero" id="hero">
+
+
+        <div class="hero-ambient cyan-ambient"></div>
+        <div class="hero-ambient purple-ambient"></div>
+
+        <div class="hero-container">
+
+
+            <div class="hero-text-content" data-aos="fade-down" data-aos-duration="1200">
+
+
+                <h1 class="hero-main-title">
+                    Level Up Your <br>
+                    <span class="text-glow-purple">Gaming Knowledge</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Dive into the ultimate repository of gaming news, hardware reviews, deep-dive strategies, and
+                    exclusive esports coverage. Stay ahead of the game.
+                </p>
+
+
+                <form id="heroSearchForm" class="hero-search-form" novalidate>
+                    <div class="hero-search-box" id="searchBoxWrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Search games, hardware, reviews...">
+                        <button type="submit" class="btn-search-cyan">Search</button>
+                    </div>
+                    <small class="search-error-msg" id="searchErrorMsg">Please enter a keyword to search!</small>
+                </form>
+
+
+                <div class="hero-tags">
+                    <span class="tags-label">Trending:</span>
+                    <a href="404.html" class="tag-link">#PS5Pro</a>
+                    <a href="404.html" class="tag-link">#RTX5090</a>
+                    <a href="404.html" class="tag-link">#Esports2026</a>
+                </div>
+            </div>
+
+
+            <div class="hero-featured-visual" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
+                <div class="featured-glass-card">
+                    <div class="card-glow-border"></div>
+
+                    <div class="featured-image-box">
+                        <img src="./asset/g2.webp" alt="Featured News">
+                        <div class="live-badge"><i class="fa-solid fa-bolt"></i> BREAKING</div>
+                    </div>
+
+                    <div class="featured-card-content">
+                        <div class="meta-tags">
+                            <span class="cyan-text"><i class="fa-solid fa-microchip"></i> Hardware</span>
+                            <span class="date"><i class="fa-solid fa-calendar-days"></i> Oct 06, 2026</span>
+                        </div>
+                        <h3 class="card-post-title">Nvidia RTX 50-Series: The Ultimate Performance Leap?</h3>
+                        <a href="#" class="read-more-link">
+                            Read Full Story <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="loot-categories-section" id="categories">
+        <div class="loot-container">
+
+
+            <div class="core-header-center" data-aos="fade-up" data-aos-duration="1000">
+
+                <h2 class="core-title-fixed">Loot <span class="text-glow-purple">Categories</span></h2>
+                <p class="core-subtitle-fixed">
+                    Filter your intel feed. Select your favorite gaming topics from hardware reviews to elite esports
+                    strategies.
+                </p>
+            </div>
+
+
+            <div class="loot-grid">
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flip-card-inner cyan-flip">
+
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-microchip"></i></div>
+                            <h3 class="loot-title">Hardware & PC</h3>
+                        </div>
+
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Latest GPUs, CPUs, and custom rig building guides.</p>
+                            <a href="404.html" class="loot-link">24 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flip-card-inner purple-flip">
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-trophy"></i></div>
+                            <h3 class="loot-title">eSports Tournaments</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Live coverage, match analysis, and pro player stats.</p>
+                            <a href="404.html" class="loot-link">18 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flip-card-inner cyan-flip">
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-gamepad"></i></div>
+                            <h3 class="loot-title">Game Reviews</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Honest reviews of the latest AAA and indie releases.</p>
+                            <a href="404.html" class="loot-link">56 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flip-card-inner purple-flip">
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
+                            <h3 class="loot-title">Elite Strategies</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Level up your skills with tips from top-tier gamers.</p>
+                            <a href="404.html" class="loot-link">32 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flip-card-inner cyan-flip">
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-headset"></i></div>
+                            <h3 class="loot-title">Streaming Gear</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Microphones, cameras, and lighting for your stream.</p>
+                            <a href="404.html" class="loot-link">14 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flip-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flip-card-inner purple-flip">
+                        <div class="flip-card-front">
+                            <div class="loot-icon"><i class="fa-solid fa-newspaper"></i></div>
+                            <h3 class="loot-title">Industry Updates</h3>
+                        </div>
+                        <div class="flip-card-back">
+                            <p class="loot-desc">Leaks, rumors, and official studio announcements.</p>
+                            <a href="404.html" class="loot-link">41 Articles <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="breaking-drops-section" id="latest-news">
+        <div class="drops-container">
+
+
+            <div class="core-header-center" data-aos="fade-up" data-aos-duration="1000">
+
+                <h2 class="core-title-fixed">Breaking <span class="text-glow-cyan">Drops</span></h2>
+                <p class="core-subtitle-fixed">
+                    Get the latest scoop before anyone else. From game announcements to hidden easter eggs, here is
+                    what's dropping right now.
+                </p>
+            </div>
+
+
+            <div class="news-grid">
+
+
+                <article class="news-card cyan-hover-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-img-box">
+                        <img src="./asset/g7.webp" alt="Gaming News">
+                        <div class="news-category-badge cyan-badge">PC GAMING</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-calendar-days"></i> Oct 06, 2026</span>
+                            <span><i class="fa-solid fa-clock"></i> 5 Min Read</span>
+                        </div>
+                        <h3 class="news-title-fixed">Steam Deck 2 Leaks: Is the Handheld PC King Returning?</h3>
+                        <p class="news-desc-fixed">
+                            Recent supply chain leaks suggest a massive APU upgrade and an OLED display standard for the
+                            next generation of handheld gaming.
+                        </p>
+                        <a href="404.html" class="news-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+
+                <article class="news-card purple-hover-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-img-box">
+                        <img src="./asset/g8.webp" alt="Game Review">
+                        <div class="news-category-badge purple-badge">REVIEWS</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-calendar-days"></i> Oct 05, 2026</span>
+                            <span><i class="fa-solid fa-clock"></i> 8 Min Read</span>
+                        </div>
+                        <h3 class="news-title-fixed">Cyberpunk 2077: Orion - First Impressions & Gameplay</h3>
+                        <p class="news-desc-fixed">
+                            We got our hands on the early alpha build of the Cyberpunk sequel. Does it deliver on the
+                            promises made by CD Projekt Red?
+                        </p>
+                        <a href="404.html" class="news-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+
+                <article class="news-card cyan-hover-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-img-box">
+                        <img src="./asset/g9.webp" alt="Esports News">
+                        <div class="news-category-badge cyan-badge">ESPORTS</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-meta">
+                            <span><i class="fa-solid fa-calendar-days"></i> Oct 04, 2026</span>
+                            <span><i class="fa-solid fa-clock"></i> 4 Min Read</span>
+                        </div>
+                        <h3 class="news-title-fixed">Valorant Champions Tour 2026: The Ultimate Roster Shuffle</h3>
+                        <p class="news-desc-fixed">
+                            Major teams are completely rebuilding their rosters ahead of the 2026 VCT season. Here are
+                            the biggest trades you missed.
+                        </p>
+                        <a href="404.html" class="news-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+
+
+            <div class="view-all-wrapper" data-aos="zoom-in" data-aos-delay="400">
+                <a href="404.html" class="btn-outline-cyan">View All Drops <i class="fa-solid fa-angles-right"></i></a>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="forge-reviews-section" id="reviews">
+        <div class="reviews-container">
+
+
+            <div class="core-header-center" data-aos="fade-up" data-aos-duration="1000">
+
+                <h2 class="core-title-fixed">Hardware <span class="text-glow-cyan">Reviews</span></h2>
+                <p class="core-subtitle-fixed">
+                    In-depth benchmarks, teardowns, and brutal honesty. We test the latest GPUs, peripherals, and rigs
+                    so you don't waste your money.
+                </p>
+            </div>
+
+
+            <div class="reviews-layout">
+
+
+                <div class="featured-review-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="review-glow-bg cyan-glow"></div>
+                    <div class="review-img-wrapper">
+                        <img src="./asset/g3.webp" alt="Featured Hardware Review">
+                        <div class="review-score-badge">
+                            <span class="score">9.5</span>
+                            <span class="max-score">/10</span>
+                        </div>
+                    </div>
+                    <div class="featured-review-content">
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span class="editor-choice">Editor's Choice</span>
+                        </div>
+                        <h3 class="review-title-fixed">Razer Blade 16 (2026): The Ultimate Desktop Replacement?</h3>
+                        <p class="review-desc-fixed">With an RTX 5080 and a dual-mode Mini-LED display, this laptop
+                            destroys every benchmark. But is it worth the astronomical price tag?</p>
+                        <a href="404.html" class="review-read-link">Read Full Review <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="compact-reviews-list" data-aos="fade-left" data-aos-delay="200">
+
+
+                    <a href="404.html" class="compact-review-item">
+                        <div class="compact-img-box">
+                            <img src="./asset/g11.webp" alt="Keyboard Review">
+                        </div>
+                        <div class="compact-content">
+                            <div class="compact-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span>8.0/10</span>
+                            </div>
+                            <h4 class="compact-title-fixed">Logitech G Pro X TKL: Flawless Wireless Gaming</h4>
+                            <span class="compact-date">Oct 02, 2026</span>
+                        </div>
+                    </a>
+
+
+                    <a href="404.html" class="compact-review-item">
+                        <div class="compact-img-box">
+                            <img src="./asset/g12.webp" alt="Headset Review">
+                        </div>
+                        <div class="compact-content">
+                            <div class="compact-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                                <span>9.8/10</span>
+                            </div>
+                            <h4 class="compact-title-fixed">SteelSeries Arctis Nova Pro: Audio Perfection</h4>
+                            <span class="compact-date">Sep 28, 2026</span>
+                        </div>
+                    </a>
+
+
+                    <a href="404.html" class="compact-review-item">
+                        <div class="compact-img-box">
+                            <img src="./asset/g13.webp" alt="Mouse Review">
+                        </div>
+                        <div class="compact-content">
+                            <div class="compact-rating">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i><i
+                                    class="fa-regular fa-star"></i>
+                                <span>7.5/10</span>
+                            </div>
+                            <h4 class="compact-title-fixed">Razer DeathAdder V3 Pro Review: Too Light?</h4>
+                            <span class="compact-date">Sep 25, 2026</span>
+                        </div>
+                    </a>
+
+
+                    <div class="compact-cta-box">
+                        <a href="404.html" class="btn-outline-purple full-width-btn">View All Hardware Reviews</a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section class="elite-strategies-section" id="strategies">
+        <div class="strategies-container">
+
+
+            <div class="core-header-center" data-aos="fade-up" data-aos-duration="1000">
+
+                <h2 class="core-title-fixed">Elite <span class="text-glow-purple">Strategies</span></h2>
+                <p class="core-subtitle-fixed">
+                    Dominate the lobby with advanced mechanics, meta loadouts, and pro-level breakdowns from Top 500
+                    players and esports coaches.
+                </p>
+            </div>
+
+
+            <div class="strategies-layout">
+
+
+                <div class="masterclass-card" data-aos="fade-right" data-aos-delay="100">
+                    <div class="mc-img-box">
+                        <img src="./asset/g.webp" alt="Apex Legends Strategy">
+
+
+                        <div class="play-btn-overlay">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+
+                        <div class="mc-badge">PRO MASTERCLASS</div>
+                    </div>
+
+                    <div class="mc-content">
+                        <div class="mc-meta">
+                            <span class="cyan-text"><i class="fa-solid fa-crosshairs"></i> Shooter</span>
+                            <span class="mc-time"><i class="fa-solid fa-clock"></i> 12 Min Video</span>
+                        </div>
+                        <h3 class="mc-title-fixed">Advanced Movement & Positioning Guide: Dominate The Final Ring</h3>
+                        <p class="mc-desc-fixed">
+                            Learn how to master tap-strafing, wall-bouncing, and high-tier rotational strategies with
+                            our exclusive Top 500 Predator coaching guide.
+                        </p>
+                        <a href="404.html" class="mc-link">Watch Full Guide <i class="fa-solid fa-circle-play"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="tactics-list" data-aos="fade-left" data-aos-delay="200">
+
+
+                    <a href="404.html" class="tactic-item">
+                        <div class="tactic-num cyan-num">01</div>
+                        <div class="tactic-info">
+                            <h4 class="tactic-title-fixed">CS:GO 2 - Essential Smoke Lineups Every Entry Fragger Needs
+                            </h4>
+                            <span class="tactic-meta"><i class="fa-solid fa-book-open"></i> 3 Min Read</span>
+                        </div>
+                    </a>
+
+
+                    <a href="404.html" class="tactic-item">
+                        <div class="tactic-num purple-num">02</div>
+                        <div class="tactic-info">
+                            <h4 class="tactic-title-fixed">Elden Ring DLC: Ultimate Boss Weakness & Build Guide</h4>
+                            <span class="tactic-meta"><i class="fa-solid fa-book-open"></i> 5 Min Read</span>
+                        </div>
+                    </a>
+
+
+                    <a href="404.html" class="tactic-item">
+                        <div class="tactic-num cyan-num">03</div>
+                        <div class="tactic-info">
+                            <h4 class="tactic-title-fixed">Min-Maxing Your Cyberpunk 2077 Netrunner Build in 2.0</h4>
+                            <span class="tactic-meta"><i class="fa-solid fa-book-open"></i> 4 Min Read</span>
+                        </div>
+                    </a>
+
+
+                    <a href="404.html" class="tactic-item">
+                        <div class="tactic-num purple-num">04</div>
+                        <div class="tactic-info">
+                            <h4 class="tactic-title-fixed">Warzone: Absolute Meta Loadout Optimization for Season 5</h4>
+                            <span class="tactic-meta"><i class="fa-solid fa-book-open"></i> 6 Min Read</span>
+                        </div>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="streamers-corner-section" id="stream">
+        <div class="streamers-container">
+
+
+            <div class="core-header-center" data-aos="fade-up" data-aos-duration="1000">
+
+                <h2 class="core-title-fixed">Streamer's <span class="text-glow-cyan">Corner</span></h2>
+                <p class="core-subtitle-fixed">
+                    Catch up on the latest video blogs, exclusive developer interviews, and our weekly GameZone
+                    podcasts.
+                </p>
+            </div>
+
+
+            <div class="featured-stream-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="stream-glow-bg"></div>
+
+                <div class="stream-thumbnail">
+                    <img src="./asset/g15.webp" alt="Live Gaming Podcast">
+
+                    <div class="live-badge-stream"><i class="fa-solid fa-circle-dot"></i> NOW STREAMING</div>
+
+                    <a href="404.html" class="play-btn-large">
+                        <i class="fa-solid fa-play"></i>
+                    </a>
+
+                    <div class="stream-duration">LIVE</div>
+                </div>
+
+                <div class="stream-info">
+                    <h3 class="stream-title-fixed">GameZone Podcast Ep. 42: The Future of VR & Haptic Feedback</h3>
+                    <p class="stream-desc-fixed">Join Alex and the Pro Team as they discuss the upcoming next-gen VR
+                        headsets and whether the metaverse gaming hype is actually real.</p>
+                    <div class="stream-meta">
+                        <span class="viewers"><i class="fa-solid fa-users"></i> 14.2K Watching</span>
+                        <a href="404.html" class="btn-outline-cyan btn-sm">Watch Live <i
+                                class="fa-solid fa-arrow-right-to-bracket"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="stream-grid">
+
+
+                <a href="404.html" class="stream-clip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="clip-thumbnail">
+                        <img src="./asset/g4.webp" alt="Video Clip">
+                        <div class="clip-duration">15:24</div>
+                        <div class="play-btn-small"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="clip-content">
+                        <h4 class="clip-title-fixed">Top 10 Unreal Engine 5 RPGs to Play in 2026</h4>
+                        <span class="clip-views"><i class="fa-solid fa-eye"></i> 142K Views &bull; 2 days ago</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="stream-clip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="clip-thumbnail">
+                        <img src="./asset/g5.webp" alt="Video Clip">
+                        <div class="clip-duration">08:45</div>
+                        <div class="play-btn-small"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="clip-content">
+                        <h4 class="clip-title-fixed">Steam Deck 2 vs ROG Ally X: Which is Better?</h4>
+                        <span class="clip-views"><i class="fa-solid fa-eye"></i> 89K Views &bull; 5 days ago</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="stream-clip-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="clip-thumbnail">
+                        <img src="./asset/g6.webp" alt="Video Clip">
+                        <div class="clip-duration">42:10</div>
+                        <div class="play-btn-small"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                    <div class="clip-content">
+                        <h4 class="clip-title-fixed">Exclusive Interview: The Creators of Cyberpunk 2077</h4>
+                        <span class="clip-views"><i class="fa-solid fa-eye"></i> 310K Views &bull; 1 week ago</span>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-container">
+
+
+            <div class="news-ambient cyan-pos"></div>
+            <div class="news-ambient purple-pos"></div>
+
+
+            <div class="newsletter-glass-box" data-aos="zoom-in-up" data-aos-duration="1000">
+
+                <div class="core-header-center mb-0">
+
+                    <div class="core-badge-fixed">
+                        <span class="dot cyan-dot-fixed"></span> STAY CONNECTED
+                    </div>
+
+                    <h2 class="core-title-fixed">Join The <span class="text-glow-cyan-fixed">Intel Network</span></h2>
+
+                    <p class="core-subtitle-fixed max-w-600">
+                        Subscribe to get exclusive hardware drops, early access to reviews, and pro strategies delivered
+                        straight to your inbox.
+                    </p>
+                </div>
+
+
+                <form id="newsletterForm1" class="newsletter-form1" novalidate>
+
+                    <div class="newsletter-input-wrapper" id="nlInputWrapper1">
+                        <i class="fa-solid fa-envelope nl-icon"></i>
+                        <input type="email" id="nlEmail1" placeholder="Enter your email address...">
+                        <button type="submit" class="btn-subscribe-fixed">Subscribe <i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+
+                    <small class="nl-error-msg" id="nlErrorMsg1">Please enter a valid email address!</small>
+                    <div class="nl-success-msg" id="nlSuccessMsg1"><i class="fa-solid fa-circle-check"></i> Welcome to
+                        the Network! You are subscribed.</div>
+ 
+                <p class="spam-disclaimer"><i class="fa-solid fa-shield-halved"></i> Zero spam. Unsubscribe at any time.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <footer class="main-footer">
+        <div class="footer-container">
+
+
+            <div class="footer-top">
+
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="logo-container">
+                        <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+                    </a>
+                    <p>The ultimate destination for gamers. Discover new worlds, upgrade your gear, and join our
+                        thriving community today.</p>
+                    <div class="social-links">
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-twitch"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="Service.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Connect</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col">
+                    <h4>Top Genres</h4>
+                    <ul>
+                        <li><a href="404.html">Action & RPG</a></li>
+                        <li><a href="404.html">FPS & Shooters</a></li>
+                        <li><a href="404.html">Racing Simulators</a></li>
+                        <li><a href="404.html">Sports & Fighting</a></li>
+                        <li><a href="404.html">Indie Games</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col newsletter-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+                        <button type="submit"><i class="fa-solid fa-envelope"></i></button>
+                    </form>
+
+                    <div id="newsletterMsg" class="form-msg"></div>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 GameZone Store. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a>
+                    <a href="404.html">Terms of Service</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true,
+                offset: 100
+            });
+        });
+    </script>
+
+
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchForm = document.getElementById('heroSearchForm');
+            const searchInput = document.getElementById('searchInput');
+            const searchBoxWrapper = document.getElementById('searchBoxWrapper');
+            const searchErrorMsg = document.getElementById('searchErrorMsg');
+
+            if (searchForm) {
+                searchForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+
+                    if (searchInput.value.trim() === '') {
+
+                        searchBoxWrapper.classList.add('error');
+                        searchErrorMsg.style.display = 'block';
+                    } else {
+
+                        searchBoxWrapper.classList.remove('error');
+                        searchErrorMsg.style.display = 'none';
+                        window.location.href = '404.html'
+
+
+
+                        searchInput.value = '';
+                    }
+                });
+
+
+                searchInput.addEventListener('input', function () {
+                    if (searchInput.value.trim() !== '') {
+                        searchBoxWrapper.classList.remove('error');
+                        searchErrorMsg.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const nlForm = document.getElementById('newsletterForm1');
+            const nlEmail = document.getElementById('nlEmail1');
+            const nlInputWrapper = document.getElementById('nlInputWrapper1');
+            const nlErrorMsg = document.getElementById('nlErrorMsg1');
+            const nlSuccessMsg = document.getElementById('nlSuccessMsg1');
+
+            if (nlForm) {
+                nlForm.addEventListener('submit', function (e) {
+                    e.preventDefault(); // Stop page reload
+
+                    const emailValue = nlEmail.value.trim();
+
+                    const isEmailValid = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(emailValue.toLowerCase());
+
+                    if (emailValue === '' || !isEmailValid) {
+
+                        nlInputWrapper.classList.add('error');
+                        nlErrorMsg.style.display = 'block';
+                        nlSuccessMsg.style.display = 'none';
+                    } else {
+
+                        nlInputWrapper.classList.remove('error');
+                        nlErrorMsg.style.display = 'none';
+
+
+                        nlInputWrapper.style.display = 'none';
+                        nlSuccessMsg.style.display = 'flex';
+
+
+                        setTimeout(() => {
+                            nlForm.reset();
+                            nlSuccessMsg.style.display = 'none';
+                            window.location.href = '404.html'
+                            nlInputWrapper.style.display = 'flex';
+                        }, 3000);
+                    }
+                });
+
+
+                nlEmail.addEventListener('input', function () {
+                    if (nlInputWrapper.classList.contains('error')) {
+                        nlInputWrapper.classList.remove('error');
+                        nlErrorMsg.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GameZone | Player Portal</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+    <div class="cyber-grid"></div>
+
+
+    <div class="floating floating-1"><i class="fa-solid fa-gamepad"></i></div>
+    <div class="floating floating-2"><i class="fa-solid fa-headset"></i></div>
+    <div class="floating floating-3"><i class="fa-solid fa-crosshairs"></i></div>
+
+    <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-left-long"></i> <span>Return to Base</span>
+    </a>
+
+    <div class="auth-wrapper">
+
+
+        <div class="auth-left">
+            <span class="brand-badge"><i class="fa-solid fa-bolt"></i> SYSTEM ACCESS</span>
+            <h1>Enter the <br><span class="neon-text">Grid</span></h1>
+            <p>Sign in to manage your custom rig builds, track hardware shipments, and access the ultimate gaming
+                knowledge repository.</p>
+            <div class="brand-stats">
+                <div class="stat">
+                    <h2>12+</h2><span>Global Servers</span>
+                </div>
+                <div class="stat">
+                    <h2>99%</h2><span>Uptime</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="auth-card">
+            <div class="logo">
+                <div class="logo">
+                <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+            </div>
+            </div>
+
+            <div class="tab-buttons">
+                <button class="active" id="loginBtn"> Login</button>
+                <button id="signupBtn">Signup</button>
+            </div>
+
+
+            <form id="loginForm" novalidate>
+                <h2>Welcome Back</h2>
+                <p class="subtitle">Access your player dashboard.</p>
+
+                <select id="loginRole" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="admin">System Admin</option>
+                    <option value="user">Player / User</option>
+                </select>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Comm Address (Email)" required>
+                </div>
+                <span class="error-msg" id="loginEmailError"></span>
+
+                <div class="password-box">
+                    <i class="fa-solid fa-lock lock-icon"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <span class="error-msg" id="loginPasswordError"></span>
+
+                <div class="options">
+                    <label class="remember-me"><input type="checkbox" id="rememberMe"> Remember Me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <button class="main-btn" type="submit">Initialize Login</button>
+
+                <a href="404.html" class="bottom-text"> <span id="showSignup">Request Access (Signup)</span></a>
+            </form>
+
+
+            <form id="signupForm" class="hidden" novalidate>
+                <h2>Join the Network</h2>
+                <p class="subtitle">Create your identity to start looting.</p>
+
+                <select id="signupRole" required>
+                    <option value="" disabled selected>Select Account Type</option>
+                    <option value="admin">System Admin</option>
+                    <option value="user">Player / User</option>
+                </select>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="signupName" placeholder="Gamer Tag (Full Name)" required>
+                </div>
+                <span class="error-msg" id="signupNameError"></span>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="signupEmail" placeholder="Comm Address (Email)" required>
+                </div>
+                <span class="error-msg" id="signupEmailError"></span>
+
+                <div class="password-box">
+                    <i class="fa-solid fa-lock lock-icon"></i>
+                    <input type="password" id="signupPassword" class="password" placeholder="Password" required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <span class="error-msg" id="signupPasswordError"></span>
+
+                <div class="password-box">
+                    <i class="fa-solid fa-lock lock-icon"></i>
+                    <input type="password" id="signupConfirmPassword" class="password" placeholder="Confirm Password"
+                        required>
+                    <i class="fa-solid fa-eye toggle-password"></i>
+                </div>
+                <span class="error-msg" id="signupConfirmError"></span>
+
+                <button type="submit" class="main-btn">Create Identity</button>
+
+                <a href="404.html" class="bottom-text"> <span id="showLogin">Have Access? (Login)</span></a>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="login.js"></script>
+</body>
+
+</html>

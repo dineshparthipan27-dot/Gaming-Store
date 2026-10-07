@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GameZone | Admin Command Center</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        :root {
+            --neon-cyan: #00f3ff;
+            --neon-purple: #b500ff;
+            --neon-red: #ff3366;
+            --neon-green: #00ff9d;
+            --neon-yellow: #fcd34d;
+
+            --bg-dark: #050507;
+            --bg-panel: rgba(18, 18, 24, 0.7);
+            --sidebar-bg: #0b0b0f;
+            --sidebar-hover: rgba(0, 243, 255, 0.05);
+
+            --border-color: rgba(255, 255, 255, 0.08);
+            --border-glow: rgba(0, 243, 255, 0.3);
+
+            --text-main: #ffffff;
+            --text-muted: #888899;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(181, 0, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-purple);
+        }
+
+        .neon-font {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+        }
+
+        .dashboard-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            position: fixed;
+            height: 100vh;
+            border-right: 1px solid var(--border-color);
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 5, 7, 0.8);
+            z-index: 999;
+            backdrop-filter: blur(5px);
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        .sidebar-header {
+            padding: 25px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(0, 243, 255, 0.02);
+        }
+
+        .logo-da {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-main);
+            font-size: 20px;
+            font-weight: 800;
+            text-decoration: none;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .logo-da i {
+            font-size: 24px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        .close-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--neon-cyan);
+            cursor: pointer;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            overflow-y: auto;
+        }
+
+        .menu-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+            cursor: pointer;
+        }
+
+        .menu-link i {
+            font-size: 16px;
+            width: 25px;
+            text-align: center;
+            transition: color 0.3s;
+        }
+
+        .menu-link:hover {
+            background-color: var(--sidebar-hover);
+            color: var(--text-main);
+            border-left: 4px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .menu-link:hover i {
+            color: var(--neon-cyan);
+        }
+
+        .menu-link.active {
+            background: linear-gradient(90deg, rgba(181, 0, 255, 0.1) 0%, transparent 100%);
+            color: var(--text-main);
+            border-left: 4px solid var(--neon-purple);
+        }
+
+        .menu-link.active i {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+
+        .sidebar-bottom {
+            padding: 20px 24px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .logout-btn {
+            color: var(--neon-red) !important;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            text-shadow: 0 0 10px var(--neon-red);
+            transform: translateX(5px);
+        }
+
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            min-height: 100vh;
+            width: calc(100% - 280px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .top-header {
+            background-color: rgba(11, 11, 15, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 998;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .greeting h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            color: var(--text-main);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .welcome-name {
+            font-family: 'Poppins', sans-serif;
+            color: var(--neon-cyan);
+            font-weight: 600;
+            font-size: 14px;
+            margin-left: 8px;
+            text-transform: none;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
+        }
+
+        .user-role {
+            font-size: 11px;
+            color: var(--neon-purple);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        .user-email {
+            font-size: 12px;
+            color: var(--text-main);
+            font-weight: 600;
+            display: block;
+        }
+
+        .user-avatar i {
+            font-size: 38px;
+            color: var(--neon-cyan);
+            filter: drop-shadow(0 0 5px var(--neon-cyan));
+        }
+
+
+        .view-section {
+            display: none;
+            padding: 35px 40px;
+            flex-direction: column;
+            gap: 30px;
+            animation: softFadeIn 0.5s ease;
+        }
+
+        .view-section.active {
+            display: flex;
+        }
+
+        @keyframes softFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .scroll-anim {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .scroll-anim.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            border-left: 4px solid var(--neon-cyan);
+            padding-left: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-card {
+            background: var(--bg-panel);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-purple);
+            box-shadow: 0 10px 30px rgba(181, 0, 255, 0.15);
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .stat-details h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .stat-details p {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+
+
+        .content-box {
+            background: var(--bg-panel);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .two-col-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 320px;
+            width: 100%;
+        }
+
+
+        .progress-item {
+            margin-bottom: 20px;
+        }
+
+        .progress-item-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: var(--neon-cyan);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 13px;
+            color: var(--text-main);
+        }
+
+        th {
+            background-color: rgba(0, 243, 255, 0.05);
+            color: var(--neon-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .status {
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .status.confirmed {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+        }
+
+        .status.crafting {
+            background: rgba(181, 0, 255, 0.1);
+            color: var(--neon-purple);
+            border: 1px solid var(--neon-purple);
+        }
+
+        .status.transit {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .status.alert {
+            background: rgba(255, 51, 102, 0.1);
+            color: var(--neon-red);
+            border: 1px solid var(--neon-red);
+        }
+
+        .status.warning {
+            background: rgba(252, 211, 77, 0.1);
+            color: var(--neon-yellow);
+            border: 1px solid var(--neon-yellow);
+        }
+
+        .action-btn {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .action-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+        }
+
+
+        .timeline {
+            margin-top: 15px;
+            border-left: 2px solid rgba(0, 243, 255, 0.3);
+            padding-left: 25px;
+        }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        .time-badge {
+            font-size: 10px;
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 800;
+            margin-right: 6px;
+            border: 1px solid var(--neon-cyan);
+        }
+
+        .info-card {
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .info-card.warning {
+            border-color: var(--neon-yellow);
+            background: rgba(252, 211, 77, 0.05);
+        }
+
+        .info-card.danger {
+            border-color: var(--neon-red);
+            background: rgba(255, 51, 102, 0.05);
+        }
+
+        .info-card i {
+            font-size: 20px;
+            margin-top: 2px;
+        }
+
+        .info-card.warning i {
+            color: var(--neon-yellow);
+        }
+
+        .info-card.danger i {
+            color: var(--neon-red);
+        }
+
+        .info-card h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--text-main);
+        }
+
+        .info-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .media-item {
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .media-item:hover {
+            border-color: var(--neon-purple);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(181, 0, 255, 0.2);
+        }
+
+        .media-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            filter: grayscale(30%) contrast(120%);
+        }
+
+        .media-item:hover .media-img {
+            filter: none;
+        }
+
+        .media-info {
+            padding: 15px;
+        }
+
+        .media-info h4 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: var(--text-main);
+        }
+
+        .media-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .menu-toggle,
+            .close-btn {
+                display: block;
+            }
+
+            .two-col-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            body,
+            html {
+                overflow-x: hidden !important;
+                max-width: 100% !important;
+            }
+
+            .top-header {
+                padding: 15px 20px;
+            }
+
+            .view-section {
+                padding: 20px 15px;
+                gap: 20px;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content-box {
+                padding: 20px 15px;
+                width: 100%;
+                box-sizing: border-box;
+                overflow-x: scroll;
+            }
+
+            .greeting h1 {
+                font-size: 16px;
+            }
+
+            .welcome-name {
+                display: none;
+            }
+
+            .table-container {
+                width: 100%;
+                overflow-x: auto;
+            }
+        }
+
+        .logo-img {
+            width: 150px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .logo-da {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo-da i {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <a href="admin.html" class="logo-da">
+                        <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+                    </a>
+                    <button class="close-btn" id="closeSidebar"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <ul class="sidebar-menu">
+                    <li><a class="menu-link active" data-target="dashboard-view">
+                            <i class="fa-solid fa-chart-line"></i> Nexus Analytics
+                        </a></li>
+                    <li><a class="menu-link" data-target="bespoke-view">
+                            <i class="fa-solid fa-microchip"></i> Custom Rig Builds
+                        </a></li>
+                    <li><a class="menu-link" data-target="showrooms-view">
+                            <i class="fa-solid fa-server"></i> Server / Hubs
+                        </a></li>
+                    <li><a class="menu-link" data-target="consultations-view">
+                            <i class="fa-solid fa-headset"></i> Support Tickets
+                        </a></li>
+                    <li><a class="menu-link" data-target="catalog-view">
+                            <i class="fa-solid fa-box-open"></i> Hardware Vault
+                        </a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-bottom">
+                <a href="login.html" class="logout-btn">
+                    <i class="fa-solid fa-power-off"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <button class="menu-toggle" id="openSidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="greeting">
+                        <h1 id="page-title">Nexus <span class="neon-font">Analytics</span> <span class="welcome-name"
+                                id="welcomeMsg">| Welcome</span></h1>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <span class="user-role">System Admin</span>
+                            <span class="user-email" id="displayEmail">admin@gamezone.com</span>
+                        </div>
+                        <div class="user-avatar">
+                            <i class="fa-solid fa-circle-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ==========================================
+                 1. DASHBOARD VIEW 
+                 ========================================== -->
+            <div id="dashboard-view" class="view-section active">
+                <section class="stats-grid scroll-anim">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 243, 255, 0.1); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+                            <i class="fa-solid fa-wallet"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>$842,500</h3>
+                            <p>YTD Store Revenue</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(181, 0, 255, 0.1); color: var(--neon-purple); border: 1px solid var(--neon-purple);">
+                            <i class="fa-solid fa-gamepad"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>1,248</h3>
+                            <p>Active Console Orders</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 255, 157, 0.1); color: var(--neon-green); border: 1px solid var(--neon-green);">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>342</h3>
+                            <p>New Players Today</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(255, 51, 102, 0.1); color: var(--neon-red); border: 1px solid var(--neon-red);">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>99.9%</h3>
+                            <p>Server Uptime</p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="two-col-grid">
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Global Sales Intel (2026)</h2>
+                        <div class="chart-container">
+                            <canvas id="trafficChart"></canvas>
+                        </div>
+                    </section>
+
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Top Loot Categories</h2>
+                        <div class="progress-wrap" style="margin-top: 30px;">
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Next-Gen Consoles (PS5/Xbox)</span>
+                                    <span>45%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 45%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Nvidia RTX GPUs</span>
+                                    <span>28%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 28%; background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Pro Gaming Monitors</span>
+                                    <span>15%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 15%; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Mechanical Keyboards & Mice</span>
+                                    <span>12%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 12%; background: var(--neon-red); box-shadow: 0 0 10px var(--neon-red);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="content-box scroll-anim">
+                    <h2 class="section-title">Recent High-Value Drops</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Player ID</th>
+                                    <th>Loot Acquired</th>
+                                    <th>Credits</th>
+                                    <th>Server Region</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>AlexHunter_99</strong></td>
+                                    <td>RTX 5090 Supreme Edition</td>
+                                    <td>$2,450</td>
+                                    <td>US-East</td>
+                                    <td><span class="status confirmed">Shipped</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>NeoMatrix23</strong></td>
+                                    <td>Custom Water-Cooled PC Build</td>
+                                    <td>$5,200</td>
+                                    <td>EU-West</td>
+                                    <td><span class="status crafting">Building</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SarahSniper</strong></td>
+                                    <td>PS5 Pro + VR2 Bundle</td>
+                                    <td>$1,100</td>
+                                    <td>Asia-South</td>
+                                    <td><span class="status transit">In Transit</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CyberPunk2077</strong></td>
+                                    <td>Steam Deck OLED 1TB</td>
+                                    <td>$650</td>
+                                    <td>EU-North</td>
+                                    <td><span class="status confirmed">Delivered</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+
+            <div id="bespoke-view" class="view-section">
+                <section class="stats-grid scroll-anim">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(181, 0, 255, 0.1); color: var(--neon-purple); border: 1px solid var(--neon-purple);">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>14</h3>
+                            <p>Active Rig Builds</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(255, 51, 102, 0.1); color: var(--neon-red); border: 1px solid var(--neon-red);">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>06</h3>
+                            <p>Priority Stress Tests</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 243, 255, 0.1); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>09</h3>
+                            <p>Ready for Dispatch</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-box scroll-anim">
+                    <h2 class="section-title">Assembly Pipeline</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Client Target</th>
+                                    <th>Specs / Build Name</th>
+                                    <th>Lead Technician</th>
+                                    <th>Est. Deployment</th>
+                                    <th>Current Phase</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>xX_Dragon_Xx</strong></td>
+                                    <td>Project Obsidian (i9, RTX 4090)</td>
+                                    <td>Tech-Lead Marcus</td>
+                                    <td>Oct 15, 2026</td>
+                                    <td><span class="status crafting">Cable Management (70%)</span></td>
+                                    <td><a href="404.html" class="action-btn">View Log</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Elena_Twitch</strong></td>
+                                    <td>Pink Neon Streamer Setup</td>
+                                    <td>Sarah T.</td>
+                                    <td>Nov 02, 2026</td>
+                                    <td><span class="status crafting">Water-cooling (40%)</span></td>
+                                    <td><a href="404.html" class="action-btn">View Log</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FazeClan_HQ</strong></td>
+                                    <td>Tournament Server Racks (x5)</td>
+                                    <td>Team Alpha</td>
+                                    <td>Sep 28, 2026</td>
+                                    <td><span class="status transit">Stress Testing (95%)</span></td>
+                                    <td><a href="404.html" class="action-btn">View Log</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Dr_Disrespect</strong></td>
+                                    <td>The Two-Time Special</td>
+                                    <td>Tech-Lead Marcus</td>
+                                    <td>Oct 20, 2026</td>
+                                    <td><span class="status alert">GPU Out of Stock</span></td>
+                                    <td><a href="404.html" class="action-btn">Update Status</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <div class="two-col-grid">
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Component Shortage Alerts</h2>
+                        <div class="info-card danger">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div>
+                                <h4>Nvidia RTX 5090 Shortage</h4>
+                                <p>Global supply chain delay. 4 custom builds are currently paused awaiting restock.</p>
+                            </div>
+                        </div>
+                        <div class="info-card warning">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <div>
+                                <h4>Custom Liquid Coolants</h4>
+                                <p>Neon Pink coolant running low. Only 2 liters remaining in the warehouse.</p>
+                            </div>
+                        </div>
+                        <div class="info-card warning">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <div>
+                                <h4>Lian Li O11 Dynamic Cases</h4>
+                                <p>Stock level critically low. Next shipment expected in 5 business days.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Build Phase Distribution</h2>
+                        <div class="progress-wrap" style="margin-top: 20px;">
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Hardware Assembly</span>
+                                    <span>35%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 35%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Custom Loop / Water Cooling</span>
+                                    <span>25%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 25%; background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Cable Management & RGB</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 20%; background: var(--neon-yellow); box-shadow: 0 0 10px var(--neon-yellow);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Benchmarking & Stress Test</span>
+                                    <span>20%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 20%; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 3. SERVER / HUBS VIEW (Added More Content)
+                 ========================================== -->
+            <div id="showrooms-view" class="view-section">
+                <section class="stats-grid scroll-anim">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 243, 255, 0.1); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>08</h3>
+                            <p>Global Game Hubs</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 255, 157, 0.1); color: var(--neon-green); border: 1px solid var(--neon-green);">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>12ms</h3>
+                            <p>Average Ping Time</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(181, 0, 255, 0.1); color: var(--neon-purple); border: 1px solid var(--neon-purple);">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>45.2K</h3>
+                            <p>Active Users Online</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-box scroll-anim">
+                    <h2 class="section-title">Worldwide Hub Status</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Server Node</th>
+                                    <th>Region Admin</th>
+                                    <th>Bandwidth Load</th>
+                                    <th>Active Players</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>US-East (New York)</strong></td>
+                                    <td>Admin_John</td>
+                                    <td>85% Load</td>
+                                    <td><strong>12,450</strong></td>
+                                    <td><span class="status confirmed">Online • Stable</span></td>
+                                    <td><a href="404.html" class="action-btn">Ping Test</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EU-West (London)</strong></td>
+                                    <td>Admin_Sarah</td>
+                                    <td>92% Load</td>
+                                    <td><strong>15,980</strong></td>
+                                    <td><span class="status warning">High Traffic Alert</span></td>
+                                    <td><a href="404.html" class="action-btn">Ping Test</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Asia-South (Mumbai)</strong></td>
+                                    <td>Admin_Raj</td>
+                                    <td>60% Load</td>
+                                    <td><strong>8,890</strong></td>
+                                    <td><span class="status confirmed">Online • Stable</span></td>
+                                    <td><a href="404.html" class="action-btn">Ping Test</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>EU-North (Paris)</strong></td>
+                                    <td>Admin_Luc</td>
+                                    <td>98% Load</td>
+                                    <td><strong>18,120</strong></td>
+                                    <td><span class="status alert">Server Overload</span></td>
+                                    <td><a href="404.html" class="action-btn">Restart Node</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <div class="two-col-grid">
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Recent Network Events</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <h4><span class="time-badge">14:15</span> EU-North Auto-Scaling</h4>
+                                <p>Paris node automatically spun up 2 backup clusters to handle concurrent player
+                                    spikes.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4><span class="time-badge">12:00</span> DDoS Attempt Blocked</h4>
+                                <p>Cloudflare integration successfully mitigated a Layer 7 attack on the Asia-South hub.
+                                </p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4><span class="time-badge">09:30</span> Weekly Maintenance</h4>
+                                <p>US-East servers underwent scheduled firmware patching. Zero downtime reported.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Bandwidth Allocation</h2>
+                        <div class="progress-wrap" style="margin-top: 20px;">
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>EU-North (Paris)</span>
+                                    <span>98%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 98%; background: var(--neon-red); box-shadow: 0 0 10px var(--neon-red);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>EU-West (London)</span>
+                                    <span>92%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 92%; background: var(--neon-yellow); box-shadow: 0 0 10px var(--neon-yellow);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>US-East (New York)</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 85%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Asia-South (Mumbai)</span>
+                                    <span>60%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 60%; background: var(--neon-green); box-shadow: 0 0 10px var(--neon-green);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 4. SUPPORT TICKETS VIEW (Added More Content)
+                 ========================================== -->
+            <div id="consultations-view" class="view-section">
+                <section class="stats-grid scroll-anim">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(255, 51, 102, 0.1); color: var(--neon-red); border: 1px solid var(--neon-red);">
+                            <i class="fa-solid fa-ticket"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>14</h3>
+                            <p>Open Support Tickets</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 243, 255, 0.1); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>104</h3>
+                            <p>Active Live Chats</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(181, 0, 255, 0.1); color: var(--neon-purple); border: 1px solid var(--neon-purple);">
+                            <i class="fa-solid fa-wrench"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>05</h3>
+                            <p>RMA Repair Requests</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-box scroll-anim" style="grid-column: 1 / -1;">
+                    <h2 class="section-title">Live Comm-Links (Tickets)</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time Logged</th>
+                                    <th>Player ID</th>
+                                    <th>Issue Category</th>
+                                    <th>Assigned Agent</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>10:30 AM</strong></td>
+                                    <td>SniperElite007</td>
+                                    <td><i class="fa-solid fa-desktop" style="color: var(--neon-cyan);"></i> Monitor
+                                        Dead Pixel</td>
+                                    <td>Agent Rossi</td>
+                                    <td><span class="status confirmed">Resolved</span></td>
+                                    <td><a href="404.html" class="action-btn">View Chat</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>01:00 PM</strong></td>
+                                    <td>GamerGirl_99</td>
+                                    <td><i class="fa-solid fa-truck" style="color: var(--neon-purple);"></i> Order Not
+                                        Delivered</td>
+                                    <td>Agent Sterling</td>
+                                    <td><span class="status crafting">Investigating</span></td>
+                                    <td><a href="404.html" class="action-btn">Reply</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>03:15 PM</strong></td>
+                                    <td>ProGamerX</td>
+                                    <td><i class="fa-solid fa-microchip" style="color: var(--neon-red);"></i>
+                                        Motherboard DOA</td>
+                                    <td>Agent Pendelton</td>
+                                    <td><span class="status alert">RMA Initiated</span></td>
+                                    <td><a href="404.html" class="action-btn">Reply</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>05:00 PM</strong></td>
+                                    <td>NoobMaster69</td>
+                                    <td><i class="fa-solid fa-gamepad" style="color: var(--neon-green);"></i> Controller
+                                        Drift</td>
+                                    <td>Agent Dupont</td>
+                                    <td><span class="status transit">Waiting on User</span></td>
+                                    <td><a href="404.html" class="action-btn">Ping User</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+
+                <div class="two-col-grid">
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Urgent Escalations</h2>
+                        <div class="info-card danger">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div>
+                                <h4>Refund Request Past 30 Days</h4>
+                                <p>Player 'GhostProtocol' escalating to manager for a refund on Alienware 34" Monitor.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="info-card warning">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <div>
+                                <h4>VIP Streamer Issue</h4>
+                                <p>Dr_Disrespect's custom rig has a GPU mounting error. Needs immediate callback.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="content-box scroll-anim">
+                        <h2 class="section-title">Agent Resolution Rates</h2>
+                        <div class="progress-wrap" style="margin-top: 20px;">
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Agent Rossi (Hardware)</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 95%; background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Agent Sterling (Shipping)</span>
+                                    <span>82%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 82%; background: var(--neon-purple); box-shadow: 0 0 10px var(--neon-purple);">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-item">
+                                <div class="progress-item-header">
+                                    <span>Agent Pendelton (RMA)</span>
+                                    <span>78%</span>
+                                </div>
+                                <div class="progress-bar-bg">
+                                    <div class="progress-bar-fill"
+                                        style="width: 78%; background: var(--neon-yellow); box-shadow: 0 0 10px var(--neon-yellow);">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- ==========================================
+                 5. INVENTORY / CATALOG VIEW 
+                 ========================================== -->
+            <div id="catalog-view" class="view-section">
+                <section class="stats-grid scroll-anim">
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(0, 243, 255, 0.1); color: var(--neon-cyan); border: 1px solid var(--neon-cyan);">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>1,240</h3>
+                            <p>Hardware SKU Items</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(255, 51, 102, 0.1); color: var(--neon-red); border: 1px solid var(--neon-red);">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>12</h3>
+                            <p>Critically Low Stock</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"
+                            style="background: rgba(181, 0, 255, 0.1); color: var(--neon-purple); border: 1px solid var(--neon-purple);">
+                            <i class="fa-solid fa-truck-ramp-box"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h3>03</h3>
+                            <p>Incoming Shipments</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-box scroll-anim">
+                    <h2 class="section-title">Hardware Vault (Gallery)</h2>
+                    <div class="media-gallery">
+                        <div class="media-item">
+                            <img src="./asset/g13.webp" class="media-img" alt="GPU">
+                            <div class="media-info">
+                                <h4>RTX 4090 Supreme</h4>
+                                <div class="media-meta"><span>Graphics Card</span><span>Stock: 5</span></div>
+
+                                <a href="404.html" class="action-btn" style="width: 100%; text-align: center;">Order
+                                    Restock</a>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="./asset/g14.webp" class="media-img" alt="Console">
+                            <div class="media-info">
+                                <h4>PlayStation 5 Pro</h4>
+                                <div class="media-meta"><span>Console</span><span>Stock: 142</span></div>
+                                <a href="404.html" class="action-btn" style="width: 100%; text-align: center;">Manage
+                                    Price</a>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="./asset/g15.webp" class="media-img" alt="Keyboard">
+                            <div class="media-info">
+                                <h4>Neon Mech Keyboard</h4>
+                                <div class="media-meta"><span>Peripherals</span><span>Stock: 89</span></div>
+                                <a href="404.html" class="action-btn" style="width: 100%; text-align: center;">Manage
+                                    Price</a>
+                            </div>
+                        </div>
+                        <div class="media-item">
+                            <img src="./asset/g16.webp" class="media-img" alt="Monitor">
+                            <div class="media-info">
+                                <h4>Odyssey 49" OLED</h4>
+                                <div class="media-meta"><span>Monitors</span><span>Stock: 2</span></div>
+                                <a href="404.html" class="action-btn"
+                                    style="width: 100%; text-align: center; border-color: var(--neon-red); color: var(--neon-red);">Low
+                                    Stock Alert</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-box scroll-anim">
+                    <h2 class="section-title">Supplier Incoming Pipeline</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Supplier / Brand</th>
+                                    <th>Loot Type</th>
+                                    <th>Quantity</th>
+                                    <th>ETA</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Nvidia Corporation</strong></td>
+                                    <td>RTX 50-Series Chips</td>
+                                    <td>120 Units</td>
+                                    <td>Oct 10, 2026</td>
+                                    <td><span class="status transit">In Transit (Air Freight)</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Sony Interactive</strong></td>
+                                    <td>DualSense Edge Controllers</td>
+                                    <td>500 Units</td>
+                                    <td>Sep 29, 2026</td>
+                                    <td><span class="status confirmed">Arriving Tomorrow</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Corsair Logistics</strong></td>
+                                    <td>DDR5 RAM Kits (32GB)</td>
+                                    <td>200 Units</td>
+                                    <td>Oct 12, 2026</td>
+                                    <td><span class="status alert">Delayed by 1 Week</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+        </main>
+    </div>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const emailValue = localStorage.getItem("UserMail");
+            const defaultEmail = "admin@gamezone.com";
+            const activeEmail = emailValue || defaultEmail;
+
+
+            const extractedName = activeEmail.split("@")[0];
+            const formattedName = extractedName.charAt(0).toUpperCase() + extractedName.slice(1);
+
+
+            const displayEmailEl = document.getElementById("displayEmail");
+            if (displayEmailEl) displayEmailEl.textContent = activeEmail;
+
+            const welcomeEl = document.getElementById("welcomeMsg");
+            if (welcomeEl) {
+                welcomeEl.innerHTML = `| Welcome, <span style="color: var(--neon-cyan); font-weight: 700;">${formattedName}</span> ⚡`;
+            }
+        });
+
+
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const openSidebarBtn = document.getElementById('openSidebar');
+        const closeSidebarBtn = document.getElementById('closeSidebar');
+
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        openSidebarBtn.addEventListener('click', openSidebar);
+        closeSidebarBtn.addEventListener('click', closeSidebar);
+        overlay.addEventListener('click', closeSidebar);
+
+
+        const menuLinks = document.querySelectorAll('.sidebar-menu .menu-link');
+        const views = document.querySelectorAll('.view-section');
+        const pageTitle = document.getElementById('page-title');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                if (this.classList.contains('active')) return;
+
+
+                menuLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+
+
+                views.forEach(v => v.classList.remove('active'));
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+
+
+                let titleText = this.innerText.trim();
+                pageTitle.innerHTML = `${titleText} <span class="welcome-name" id="welcomeMsg">| GameZone</span>`;
+
+                if (window.innerWidth <= 992) { closeSidebar(); }
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                triggerAnimations();
+            });
+        });
+
+
+        const ctx = document.getElementById('trafficChart').getContext('2d');
+        const trafficChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                datasets: [{
+                    label: 'Global Sales ($)',
+                    data: [140000, 220000, 190000, 310000, 420000, 380000, 560000, 842500],
+                    borderColor: '#00f3ff',
+                    backgroundColor: 'rgba(0, 243, 255, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointBackgroundColor: '#050507',
+                    pointBorderColor: '#b500ff',
+                    pointBorderWidth: 3,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                        ticks: { color: '#888899', font: { family: 'Poppins' } }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: { color: '#888899', font: { family: 'Poppins' } }
+                    }
+                }
+            }
+        });
+
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        function triggerAnimations() {
+            const animElements = document.querySelectorAll('.scroll-anim');
+            animElements.forEach(el => {
+                el.classList.remove('show');
+
+                setTimeout(() => observer.observe(el), 50);
+            });
+        }
+
+
+        triggerAnimations();
+    </script>
+</body>
+
+</html>

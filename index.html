@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Store Navbar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="gaming.css">
+</head>
+
+<body>
+
+ 
+<div id="cyber-loader" class="cyber-loader-overlay">
+    <div class="cyber-grid-bg"></div>
+    <div class="loader-content">
+        
+       
+        <div class="loader-logo">
+            <i class="fa-solid fa-gamepad"></i> STACKLEY<span class="neon-purple-text"></span>
+        </div>
+        
+      
+        <div class="loader-status" id="loader-status-text">INITIALIZING NEURAL LINK...</div>
+        
+  
+        <div class="loader-bar-container">
+            <div class="loader-bar-fill" id="loader-bar"></div>
+        </div>
+        
+        
+        <div class="loader-percentage" id="loader-percentage">0%</div>
+
+    </div>
+</div>
+
+
+    <header id="main-header">
+        <a href="index.html" class="logo-container">
+            <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+        </a>
+
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-item active">Home</a></li>
+                <li><a href="about.html" class="nav-item">About</a></li>
+                <li><a href="Service.html" class="nav-item">Services</a></li>
+                <li><a href="blog.html" class="nav-item">Blog</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+                <li><a href="login.html" class="nav-item login-btn"><i class="fa-solid fa-user"></i> Login</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </header>
+
+
+
+    <section id="home" class="hero-section">
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-container">
+
+
+            <div class="hero-content">
+                <div class="badge fade-in-up">
+                    <i class="fa-solid fa-fire"></i> Top Trending Gear
+                </div>
+
+                <h1 class="hero-title fade-in-up delay-1">
+                    Step Into The <br>Next Level Of <br>
+                    <span class="animated-text">Gaming Reality</span>
+                </h1>
+
+                <p class="hero-subtitle fade-in-up delay-2">
+                    Immerse yourself in premium gaming worlds. Discover top-tier games, exclusive gears, and epic daily
+                    deals.
+                </p>
+
+                <div class="hero-buttons fade-in-up delay-3">
+                    <a href="404.html" class="btn btn-primary">
+                        <i class="fa-solid fa-gamepad"></i> Explore Games
+                    </a>
+                    <a href="404.html" class="btn btn-outline">
+                        <i class="fa-solid fa-tags"></i> View Offers
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="hero-visual fade-in-left delay-2">
+                <div class="img-wrapper">
+
+                    <img src="./asset/g7.webp" alt="Premium Gaming Setup" class="premium-img">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+
+
+            <div class="about-visual slide-in-left">
+                <div class="about-img-wrapper">
+                    <img id="about-main-image" src="./asset/g.webp" alt="Gaming Setup" class="about-img">
+
+
+                    <div class="years-badge floating-anim">
+                        <div class="badge-glow"></div>
+                        <span class="highlight-number">10+</span>
+                        <span class="badge-text">Years of <br>Gaming</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="about-content">
+                <div class="badge fade-in-up delay-1">
+                    <i class="fa-solid fa-user"></i> WHO WE ARE
+                </div>
+
+                <h2 class="section-title fade-in-up delay-2">
+                    More Than Just A <br>
+                    <span class="animated-gradient-text">Gaming Store</span>
+                </h2>
+
+                <p class="about-description fade-in-up delay-3">
+                    We are a collective of passionate gamers dedicated to bringing you the ultimate gaming experience.
+                    From blockbuster AAA titles to the most advanced hardware, we provide everything you need to conquer
+                    your digital worlds.
+                </p>
+
+
+                <div class="about-features fade-in-up delay-4">
+
+                    <div class="feature-box active-box" data-img="./asset/g1.webp" onclick="changeImage(this)">
+                        <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+                        <div class="feature-text">
+                            <h4>Premium Gears</h4>
+                            <p>Top-tier accessories & hardware</p>
+                        </div>
+                    </div>
+
+
+                    <div class="feature-box" data-img="./asset/g2.webp" onclick="changeImage(this)">
+                        <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                        <div class="feature-text">
+                            <h4>24/7 Support</h4>
+                            <p>Always here for the community</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up delay-5">
+                    <a href="404.html" class="btn-primary pulse-btn">
+                        OUR SERVICES <i class="fa-solid fa-arrow-right btn-icon"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section id="featured" class="featured-section">
+        <div class="featured-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-fire-flame-curved"></i> TOP PICKS
+                </div>
+                <h2 class="section-title">
+                    Featured <span class="animated-gradient-text">Games</span>
+                </h2>
+                <p class="section-subtitle">
+                    Explore our handpicked selection of top-tier games. Grab them now before the offer ends!
+                </p>
+            </div>
+
+
+            <div class="game-grid">
+
+
+                <div class="game-card fade-in-up delay-1">
+                    <div class="card-img-wrapper">
+                        <div class="discount-badge">-20%</div>
+                        <img src="./asset/g3.webp" alt="Cyber Action Game" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <div class="game-category">Action / RPG</div>
+                        <h3 class="game-title">Cyber City: 2077</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="game-price">
+                                <span class="old-price">$59.99</span>
+                                <span class="new-price">$47.99</span>
+                            </div>
+                            <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="game-card fade-in-up delay-2">
+                    <div class="card-img-wrapper">
+                        <div class="discount-badge new-badge">NEW</div>
+                        <img src="./asset/g4.webp" alt="Racing Game" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <div class="game-category">Racing / Simulator</div>
+                        <h3 class="game-title">Neon Drift 5</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="game-price">
+                                <span class="new-price">$69.99</span>
+                            </div>
+                            <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="game-card fade-in-up delay-3">
+                    <div class="card-img-wrapper">
+                        <div class="discount-badge">-50%</div>
+                        <img src="./asset/g5.webp" alt="Shooter Game" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <div class="game-category">FPS / Multiplayer</div>
+                        <h3 class="game-title">Modern Warfare: Ops</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="game-price">
+                                <span class="old-price">$39.99</span>
+                                <span class="new-price">$19.99</span>
+                            </div>
+                            <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="game-card fade-in-up delay-4">
+                    <div class="card-img-wrapper">
+                        <div class="discount-badge hot-badge">HOT</div>
+                        <img src="./asset/g6.webp" alt="Adventure Game" class="card-img">
+                    </div>
+                    <div class="card-content">
+                        <div class="game-category">Adventure / Story</div>
+                        <h3 class="game-title">Lost Legends II</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                            <span>(4.8)</span>
+                        </div>
+                        <div class="card-footer">
+                            <div class="game-price">
+                                <span class="new-price">$49.99</span>
+                            </div>
+                            <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="categories" class="categories-section">
+        <div class="categories-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-shapes"></i> TOP GENRES
+                </div>
+                <h2 class="section-title">
+                    Browse By <span class="animated-gradient-text">Category</span>
+                </h2>
+                <p class="section-subtitle">
+                    Find exactly what you're looking for. Dive into your favorite gaming genres.
+                </p>
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <a href="404.html" class="category-card fade-in-up delay-1">
+                    <div class="category-bg" style="background-image: url('./asset/g6.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-khanda"></i></div>
+                        <h3 class="category-title">Action</h3>
+                        <span class="game-count">120+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-2">
+                    <div class="category-bg" style="background-image: url('./asset/g7.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-car-side"></i></div>
+                        <h3 class="category-title">Racing</h3>
+                        <span class="game-count">85+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-3">
+                    <div class="category-bg" style="background-image: url('./asset/g8.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-crosshairs"></i></div>
+                        <h3 class="category-title">Shooter</h3>
+                        <span class="game-count">95+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-4">
+                    <div class="category-bg" style="background-image: url('./asset/g9.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-dragon"></i></div>
+                        <h3 class="category-title">RPG</h3>
+                        <span class="game-count">150+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-1">
+                    <div class="category-bg" style="background-image: url('./asset/g10.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-futbol"></i></div>
+                        <h3 class="category-title">Sports</h3>
+                        <span class="game-count">60+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-2">
+                    <div class="category-bg" style="background-image: url('./asset/g.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-chess-knight"></i></div>
+                        <h3 class="category-title">Strategy</h3>
+                        <span class="game-count">110+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-3">
+                    <div class="category-bg" style="background-image: url('./asset/g1.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-ghost"></i></div>
+                        <h3 class="category-title">Horror</h3>
+                        <span class="game-count">45+ Games</span>
+                    </div>
+                </a>
+
+
+                <a href="404.html" class="category-card fade-in-up delay-4">
+                    <div class="category-bg" style="background-image: url('./asset/g2.webp');"></div>
+                    <div class="category-overlay"></div>
+                    <div class="category-content">
+                        <div class="category-icon"><i class="fa-solid fa-hand-fist"></i></div>
+                        <h3 class="category-title">Fighting</h3>
+                        <span class="game-count">70+ Games</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="new-releases" class="new-releases-section">
+        <div class="releases-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-rocket"></i> JUST DROPPED
+                </div>
+                <h2 class="section-title">
+                    New <span class="animated-gradient-text">Releases</span>
+                </h2>
+                <p class="section-subtitle">
+                    Be the first to play the latest and greatest titles hitting our store this week.
+                </p>
+            </div>
+
+
+            <div class="releases-grid">
+
+
+                <div class="release-card large-card fade-in-up delay-1">
+                    <div class="release-img-wrapper">
+                        <div class="release-badge pulse-badge">OUT NOW</div>
+                        <img src="./asset/g11.webp" alt="Space Odyssey" class="release-img">
+                    </div>
+                    <div class="release-content">
+                        <div class="platform-icons">
+                            <i class="fa-brands fa-playstation"></i>
+                            <i class="fa-brands fa-xbox"></i>
+                            <i class="fa-brands fa-windows"></i>
+                        </div>
+                        <h3 class="release-title">Galactic Odyssey: Year 3000</h3>
+                        <p class="release-desc">Embark on an epic journey across the galaxy. The most anticipated sci-fi
+                            RPG of the year is finally here with breathtaking graphics.</p>
+                        <div class="release-footer">
+                            <span class="release-price">$69.99</span>
+                            <a href="404.html" class="btn-primary btn-small">
+                                Get It Now <i class="fa-solid fa-arrow-right btn-icon"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="small-cards-column">
+
+
+                    <div class="release-card small-card fade-in-up delay-2">
+                        <div class="release-img-wrapper">
+                            <img src="./asset/g12.webp" alt="Cyber Ninja" class="release-img">
+                        </div>
+                        <div class="release-content">
+                            <h4 class="release-title">Cyber Ninja II</h4>
+                            <div class="platform-icons small-icons">
+                                <i class="fa-brands fa-windows"></i>
+                                <i class="fa-brands fa-playstation"></i>
+                            </div>
+                            <div class="release-footer">
+                                <span class="release-price">$49.99</span>
+                                <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="release-card small-card fade-in-up delay-3">
+                        <div class="release-img-wrapper">
+                            <img src="./asset/g13.webp" alt="Street Racer" class="release-img">
+                        </div>
+                        <div class="release-content">
+                            <h4 class="release-title">Midnight Drift</h4>
+                            <div class="platform-icons small-icons">
+                                <i class="fa-brands fa-xbox"></i>
+                                <i class="fa-brands fa-windows"></i>
+                            </div>
+                            <div class="release-footer">
+                                <span class="release-price">$59.99</span>
+                                <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="release-card small-card fade-in-up delay-4">
+                        <div class="release-img-wrapper">
+                            <div class="release-badge pre-order-badge">PRE-ORDER</div>
+                            <img src="./asset/g14.webp" alt="Warzone" class="release-img">
+                        </div>
+                        <div class="release-content">
+                            <h4 class="release-title">Ghost Ops: Covert</h4>
+                            <div class="platform-icons small-icons">
+                                <i class="fa-brands fa-playstation"></i>
+                                <i class="fa-brands fa-xbox"></i>
+                            </div>
+                            <div class="release-footer">
+                                <span class="release-price">$69.99</span>
+                                <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="trending" class="trending-section">
+        <div class="trending-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-chart-line"></i> TRENDING NOW
+                </div>
+                <h2 class="section-title">
+                    Top <span class="animated-gradient-text">Sellers</span>
+                </h2>
+                <p class="section-subtitle">
+                    The most played and highest-rated games this week. Join millions of players worldwide.
+                </p>
+            </div>
+
+
+            <div class="trending-list">
+
+
+                <div class="trending-item fade-in-up delay-1">
+                    <div class="rank-number">01</div>
+                    <div class="trending-img-wrapper">
+                        <img src="./asset/g16.webp" alt="Cyberpunk" class="trending-img">
+                    </div>
+                    <div class="trending-info">
+                        <div class="game-category">RPG / Open World</div>
+                        <h3 class="game-title">Cyber City: Nexus</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i> 4.9 <span class="review-count">(24k Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="trending-action">
+                        <div class="trending-price">$59.99</div>
+                        <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="trending-item fade-in-up delay-2">
+                    <div class="rank-number">02</div>
+                    <div class="trending-img-wrapper">
+                        <img src="./asset/g17.webp" alt="FPS Game" class="trending-img">
+                    </div>
+                    <div class="trending-info">
+                        <div class="game-category">FPS / Multiplayer</div>
+                        <h3 class="game-title">Apex Warfare: Zero</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i> 4.8 <span class="review-count">(18k Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="trending-action">
+                        <div class="trending-price free-price">FREE</div>
+                        <a href="404.html" class="btn-primary btn-play">Play Now</a>
+                    </div>
+                </div>
+
+
+                <div class="trending-item fade-in-up delay-3">
+                    <div class="rank-number">03</div>
+                    <div class="trending-img-wrapper">
+                        <img src="./asset/g18.webp" alt="Action Game" class="trending-img">
+                    </div>
+                    <div class="trending-info">
+                        <div class="game-category">Action / Adventure</div>
+                        <h3 class="game-title">Elden Shadows</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i> 4.7 <span class="review-count">(15k Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="trending-action">
+                        <div class="trending-price">
+                            <span class="old-price">$49.99</span>
+                            $39.99
+                        </div>
+                        <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="trending-item fade-in-up delay-4">
+                    <div class="rank-number">04</div>
+                    <div class="trending-img-wrapper">
+                        <img src="./asset/g.webp" alt="Sports Game" class="trending-img">
+                    </div>
+                    <div class="trending-info">
+                        <div class="game-category">Sports / Simulator</div>
+                        <h3 class="game-title">Pro Soccer 2026</h3>
+                        <div class="game-rating">
+                            <i class="fa-solid fa-star"></i> 4.5 <span class="review-count">(10k Reviews)</span>
+                        </div>
+                    </div>
+                    <div class="trending-action">
+                        <div class="trending-price">$69.99</div>
+                        <a href="404.html" class="cart-btn"><i class="fa-solid fa-cart-plus"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="offers" class="offers-section">
+        <div class="offers-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-tags"></i> HUGE SAVINGS
+                </div>
+                <h2 class="section-title">
+                    Special <span class="animated-gradient-text">Offers</span>
+                </h2>
+                <p class="section-subtitle">
+                    Don't miss out on these limited-time deals. Upgrade your library for less!
+                </p>
+            </div>
+
+
+            <div class="offers-grid">
+
+
+                <div class="offer-card large-offer fade-in-up delay-1">
+                    <div class="offer-bg" style="background-image: url('./asset/g12.webp');"></div>
+                    <div class="offer-overlay"></div>
+
+                    <div class="offer-content">
+                        <div class="discount-tag highlight-tag">SAVE 75%</div>
+                        <h4 class="offer-subtitle">DEAL OF THE WEEK</h4>
+                        <h2 class="offer-title">Galactic Warfare: Ultimate Edition</h2>
+
+
+                        <div class="countdown-timer">
+                            <div class="time-box">
+                                <span class="time-num">03</span>
+                                <span class="time-label">Days</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-num">14</span>
+                                <span class="time-label">Hours</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-num">45</span>
+                                <span class="time-label">Mins</span>
+                            </div>
+                        </div>
+
+                        <div class="offer-action">
+                            <div class="offer-price">
+                                <span class="old-price">$79.99</span>
+                                <span class="new-price">$19.99</span>
+                            </div>
+                            <a href="404.html" class="btn-primary">Claim Offer <i
+                                    class="fa-solid fa-cart-shopping btn-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="small-offers-column">
+
+
+                    <div class="offer-card small-offer fade-in-up delay-2">
+                        <div class="offer-bg" style="background-image: url('./asset/g13.webp');"></div>
+                        <div class="offer-overlay"></div>
+                        <div class="offer-content">
+                            <div class="discount-tag">-50%</div>
+                            <h3 class="offer-title">Neon Ninja DX</h3>
+                            <div class="offer-action">
+                                <div class="offer-price">
+                                    <span class="old-price">$39.99</span>
+                                    <span class="new-price">$19.99</span>
+                                </div>
+                                <a href="404.html" class="cart-btn-outline"><i class="fa-solid fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="offer-card small-offer fade-in-up delay-3">
+                        <div class="offer-bg" style="background-image: url('./asset/g18.webp');"></div>
+                        <div class="offer-overlay"></div>
+                        <div class="offer-content">
+                            <div class="discount-tag">-30%</div>
+                            <h3 class="offer-title">Street Racer Pro</h3>
+                            <div class="offer-action">
+                                <div class="offer-price">
+                                    <span class="old-price">$59.99</span>
+                                    <span class="new-price">$41.99</span>
+                                </div>
+                                <a href="404.html" class="cart-btn-outline"><i class="fa-solid fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="services" class="services-section">
+        <div class="services-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-screwdriver-wrench"></i> OUR SERVICES
+                </div>
+                <h2 class="section-title">
+                    Premium <span class="animated-gradient-text">Services</span>
+                </h2>
+                <p class="section-subtitle">
+                    Beyond just selling games. We provide top-notch services to keep your gaming experience flawless.
+                </p>
+            </div>
+
+
+            <div class="services-grid">
+
+
+                <div class="service-card fade-in-up delay-1">
+                    <div class="service-icon"><i class="fa-solid fa-computer"></i></div>
+                    <h3 class="service-title">Custom PC Builds</h3>
+                    <p class="service-desc">Dreaming of the ultimate gaming rig? Our experts will help you pick the best
+                        parts and build it from scratch .</p>
+                    <a href="404.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+
+                <div class="service-card fade-in-up delay-2">
+                    <div class="service-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h3 class="service-title">Repairs </h3>
+                    <p class="service-desc">Console overheating? PC running slow? Bring it to us. We provide deep
+                        cleaning, and hardware upgrades.</p>
+                    <a href="404.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+
+                <div class="service-card fade-in-up delay-3">
+                    <div class="service-icon"><i class="fa-solid fa-right-left"></i></div>
+                    <h3 class="service-title">Trade-In Program</h3>
+                    <p class="service-desc">Finished playing a game? Trade in your old games, consoles, and accessories
+                        for store credit to buy the latest releases.</p>
+                    <a href="404.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+
+                <div class="service-card fade-in-up delay-4">
+                    <div class="service-icon"><i class="fa-solid fa-crown"></i></div>
+                    <h3 class="service-title">Pro Membership</h3>
+                    <p class="service-desc">Join our exclusive community. Get early access to pre-orders, free monthly
+                        rentals, VIP support, and massive discounts.</p>
+                    <a href="404.html" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section id="blog" class="blog-section-ultimate">
+        <div class="blog-container">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-newspaper"></i> LATEST UPDATES
+                </div>
+                <h2 class="section-title">
+                    Gaming <span class="animated-gradient-text">News & Blog</span>
+                </h2>
+                <p class="section-subtitle">
+                    Stay updated with the latest industry news, patch notes, and hardware reviews.
+                </p>
+            </div>
+
+
+            <div class="blog-zigzag-wrapper">
+
+
+                <article class="blog-item fade-in-up delay-1">
+                    <div class="blog-image">
+                        <img src="./asset/g7.webp" alt="Esports">
+                    </div>
+                    <div class="blog-content content-right">
+                        <div class="blog-meta">
+                            <span class="category">Esports</span>
+                            <span class="date">Oct 15, 2026</span>
+                        </div>
+                        <h3 class="blog-title">Global Championship 2026: The Final Showdown</h3>
+                        <p class="blog-excerpt">The biggest esports event of the year concludes this weekend. Here is
+                            everything you need to know about the final teams and the massive prize pool.</p>
+                        <a href="404.html" class="btn-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+
+                <article class="blog-item fade-in-up delay-2">
+                    <div class="blog-image image-right">
+                        <img src="./asset/g6.webp" alt="Hardware">
+                    </div>
+                    <div class="blog-content content-left">
+                        <div class="blog-meta">
+                            <span class="category category-purple">Hardware</span>
+                            <span class="date">Oct 12, 2026</span>
+                        </div>
+                        <h3 class="blog-title">Nvidia RTX 5090: Is It Worth The Massive Upgrade?</h3>
+                        <p class="blog-excerpt">We put the next-generation flagship GPU to the test across 20 different
+                            AAA titles. The 4K benchmark results will completely shock you.</p>
+                        <a href="404.html" class="btn-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+
+                <article class="blog-item fade-in-up delay-3">
+                    <div class="blog-image">
+                        <img src="./asset/g14.webp" alt="Update">
+                    </div>
+                    <div class="blog-content content-right">
+                        <div class="blog-meta">
+                            <span class="category">Patch Notes</span>
+                            <span class="date">Oct 08, 2026</span>
+                        </div>
+                        <h3 class="blog-title">Cyber City Nexus: Massive Season 3 Update Notes</h3>
+                        <p class="blog-excerpt">Season 3 brings a brand new map, 5 new weapons, and massive balancing
+                            changes to the current meta. Read the full patch notes to stay ahead.</p>
+                        <a href="404.html" class="btn-read-more">Read Article <i
+                                class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="reviews" class="reviews-section-v2">
+        <div class="reviews-container-v2">
+
+
+            <div class="section-header fade-in-up">
+                <div class="badge">
+                    <i class="fa-solid fa-comment-dots"></i> COMMUNITY
+                </div>
+                <h2 class="section-title">
+                    Player <span class="animated-gradient-text">Voices</span>
+                </h2>
+            </div>
+
+
+            <div class="testimonial-showcase fade-in-up delay-2">
+
+
+                <div class="glow-orb"></div>
+
+                <i class="fa-solid fa-quote-left giant-quote"></i>
+
+
+                <div class="review-track">
+
+
+                    <div class="review-content active-review" id="review-0">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-text">"The ultimate gaming destination! Delivery of keys is instant, and the
+                            custom PC building service is literally out of this world. My framerates have never been
+                            higher."</p>
+                        <div class="review-author">
+                            <h4 class="author-name">Alex "Shadow" Vance</h4>
+                            <span class="author-tag">@shadow_gamer</span>
+                        </div>
+                    </div>
+
+
+                    <div class="review-content" id="review-1">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="review-text">"I traded in my old console and games here. They gave me the best value
+                            compared to any other store. Used the store credit to grab the latest RPG. Fantastic
+                            experience!"</p>
+                        <div class="review-author">
+                            <h4 class="author-name">David "Sniper" Lee</h4>
+                            <span class="author-tag">@david_aimbot</span>
+                        </div>
+                    </div>
+
+
+                    <div class="review-content" id="review-2">
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="review-text">"Their Pro Membership is a game-changer. Early access to pre-orders and
+                            massive discounts saved me hundreds of dollars this year alone. Highly recommended!"</p>
+                        <div class="review-author">
+                            <h4 class="author-name">Marcus "Ghost" Cole</h4>
+                            <span class="author-tag">@ghost_recon24</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="review-avatars">
+                    <div class="avatar-btn active-avatar" onclick="changeReview(0)">
+                        <img src="./asset/man3.webp" alt="Alex">
+                    </div>
+                    <div class="avatar-btn" onclick="changeReview(1)">
+                        <img src="./asset/man2.webp" alt="David">
+                    </div>
+                    <div class="avatar-btn" onclick="changeReview(2)">
+                        <img src="./asset/man1.webp" alt="Marcus">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer class="main-footer">
+        <div class="footer-container">
+
+
+            <div class="footer-top">
+
+                <div class="footer-col brand-col">
+                    <a href="index.html" class="logo-container">
+                        <img src="./asset/logo_aqua.webp" alt="Company Logo" class="logo-img">
+                    </a>
+                    <p>The ultimate destination for gamers. Discover new worlds, upgrade your gear, and join our
+                        thriving community today.</p>
+                    <div class="social-links">
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-discord"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="404.html" class="social-icon"><i class="fa-brands fa-twitch"></i></a>
+                    </div>
+                </div>
+
+
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="Service.html">Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Connect</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col">
+                    <h4>Top Genres</h4>
+                    <ul>
+                        <li><a href="404.html">Action & RPG</a></li>
+                        <li><a href="404.html">FPS & Shooters</a></li>
+                        <li><a href="404.html">Racing Simulators</a></li>
+                        <li><a href="404.html">Sports & Fighting</a></li>
+                        <li><a href="404.html">Indie Games</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="footer-col newsletter-col">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>
+                    <form class="newsletter-form" id="newsletterForm" novalidate>
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+                        <button type="submit"><i class="fa-solid fa-envelope"></i></button>
+                    </form>
+
+                    <div id="newsletterMsg" class="form-msg"></div>
+                </div>
+            </div>
+
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 GameZone Store. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="404.html">Privacy Policy</a>
+                    <a href="404.html">Terms of Service</a>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="main.js"></script>
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            AOS.init({
+                once: true,
+                offset: 100
+            });
+        });
+    </script>
+
+
+    <script>
+
+        function changeImage(element) {
+            let boxes = document.querySelectorAll('.feature-box');
+            boxes.forEach(box => {
+                box.classList.remove('active-box');
+            });
+
+            element.classList.add('active-box');
+
+            let newImg = element.getAttribute('data-img');
+            let mainImage = document.getElementById('about-main-image');
+
+            mainImage.classList.remove('img-fade');
+
+
+            setTimeout(() => {
+                mainImage.src = newImg;
+                mainImage.classList.add('img-fade');
+            }, 20);
+        }
+
+
+
+
+        function changeReview(index) {
+
+            const reviews = document.querySelectorAll('.review-content');
+            const avatars = document.querySelectorAll('.avatar-btn');
+
+
+            reviews.forEach(review => review.classList.remove('active-review'));
+            avatars.forEach(avatar => avatar.classList.remove('active-avatar'));
+
+            document.getElementById(`review-${index}`).classList.add('active-review');
+            avatars[index].classList.add('active-avatar');
+        }
+    </script>
+
+
+
+</body>
+
+</html>
