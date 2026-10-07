@@ -1298,14 +1298,12 @@
 
 
 
-
  .hq-map-section {
      background-color: #050507;
      padding: 100px 5%;
      position: relative;
      z-index: 2;
  }
-
 
  .cyber-map-container {
      position: relative;
@@ -1318,25 +1316,17 @@
  }
 
 
- .map-bg-image {
+ .map-iframe-bg {
      position: absolute;
      top: 0;
      left: 0;
      width: 100%;
      height: 100%;
-
-     background: url('https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
-     filter: grayscale(80%) contrast(120%) brightness(0.4) sepia(50%) hue-rotate(180deg);
-
+     border: none;
      z-index: 0;
-     transition: transform 10s ease;
+
+     filter: invert(90%) hue-rotate(180deg) brightness(70%) contrast(120%) sepia(30%) hue-rotate(180deg);
  }
-
- .cyber-map-container:hover .map-bg-image {
-     transform: scale(1.05);
-
- }
-
 
  .map-grid-overlay {
      position: absolute;
@@ -1349,19 +1339,21 @@
          linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
      background-size: 30px 30px;
      z-index: 1;
- }
+     pointer-events: none;
 
+ }
 
  .map-marker-wrapper {
      position: absolute;
      top: 50%;
      left: 60%;
-
      transform: translate(-50%, -50%);
      z-index: 2;
      display: flex;
      justify-content: center;
      align-items: center;
+     pointer-events: none;
+
  }
 
  .marker-dot {
@@ -1403,7 +1395,6 @@
      }
  }
 
-
  .map-hud-card {
      position: absolute;
      bottom: 40px;
@@ -1412,13 +1403,14 @@
      background: rgba(10, 10, 12, 0.85) !important;
      border: 1px solid rgba(255, 255, 255, 0.1) !important;
      border-right: 2px solid #00f3ff !important;
-
      border-radius: 16px !important;
      padding: 30px !important;
      z-index: 3;
      backdrop-filter: blur(15px);
      -webkit-backdrop-filter: blur(15px);
      box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.5) !important;
+     pointer-events: auto;
+
  }
 
  .hud-glitch-bar {
@@ -1485,7 +1477,6 @@
      margin-top: 25px !important;
  }
 
-
  @media (max-width: 991px) {
      .map-marker-wrapper {
          left: 50%;
@@ -1520,7 +1511,6 @@
          font-size: 1.2rem !important;
      }
  }
-
 
 
 
@@ -1646,6 +1636,7 @@
      justify-content: center;
      gap: 20px;
      flex-wrap: wrap;
+     align-items: flex-start;
  }
 
  .btn-outline-cyan-fixed {
