@@ -552,9 +552,9 @@
             const runCounters = () => {
                 counters.forEach(counter => {
                     const target = parseFloat(counter.getAttribute('data-target'));
-                    const isDecimal = target % 1 !== 0; // Check if target has decimal
-                    const duration = 2000; // Total animation time (2 seconds)
-                    const increment = target / (duration / 16); // 60FPS calculation
+                    const isDecimal = target % 1 !== 0; 
+                    const duration = 2000; 
+                    const increment = target / (duration / 16);
 
                     let current = 0;
 
@@ -578,9 +578,9 @@
                 const observer = new IntersectionObserver((entries) => {
                     if (entries[0].isIntersecting && !hasCounted) {
                         runCounters();
-                        hasCounted = true; // Ensures it only runs once
+                        hasCounted = true; 
                     }
-                }, { threshold: 0.5 }); // Triggers when 50% of the section is visible
+                }, { threshold: 0.5 }); 
 
                 observer.observe(statsSection);
             }

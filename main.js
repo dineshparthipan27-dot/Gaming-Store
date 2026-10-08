@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             
             statusText.innerText = loadingMessages[5];
-            statusText.style.color = "#00ff9d"; // Changes to Neon Green
+            statusText.style.color = "#00ff9d"; 
             statusText.style.textShadow = "0 0 15px #00ff9d";
 
          
