@@ -827,12 +827,9 @@
  }
 
 
-
-
-
  .support-hub-section {
      background-color: #07070a;
-    overflow-x: hidden;
+     overflow-x: hidden;
      padding: 100px 5%;
      position: relative;
      z-index: 2;
